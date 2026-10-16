@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { DollarSign, ShieldAlert } from 'lucide-react'
+import { SectionHeader } from '@/components/SectionHeader'
 
 export function TheChaosToken() {
   return (

@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { Menu, X, ArrowRight } from 'lucide-react'
-import { NAV_LINKS } from './utils'
+import { NAV_LINKS, X_PLACEHOLDER_URL } from './utils'
 import { cn } from './utils'
 
 export function Navbar() {

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { BarChart3, Target, ShieldCheck } from 'lucide-react'
+import { SectionHeader } from '@/components/SectionHeader'
 
 interface Feature {
   icon: React.ElementType

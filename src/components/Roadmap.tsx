@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { MapPin, Code2, Layers, Rocket } from 'lucide-react'
+import { SectionHeader } from '@/components/SectionHeader'
 
 interface Phase {
   title: string

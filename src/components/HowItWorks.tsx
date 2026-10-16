@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { ArrowRight, Scale } from 'lucide-react'
+import { SectionHeader } from '@/components/SectionHeader'
 
 interface Step {
   number: string
