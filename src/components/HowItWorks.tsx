@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowRight, Compare } from 'lucide-react'
+import { ArrowRight, Scale } from 'lucide-react'
 
 interface Step {
   number: string
@@ -70,7 +70,7 @@ export function HowItWorks() {
       <div className="card mb-20">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-2">
-            <Compare className="w-5 h-5 text-silver-400" />
+            <Scale className="w-5 h-5 text-silver-400" />
             <span className="text-xs font-mono uppercase tracking-wider text-silver-500">
               illustrative example
             </span>
