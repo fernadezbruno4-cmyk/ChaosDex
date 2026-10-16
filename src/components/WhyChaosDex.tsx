@@ -33,7 +33,7 @@ const FEATURES: Feature[] = [
 
 export function WhyChaosDex() {
   return (
-    <section id="why-chaosdex" className="container-section bg-black-bg">
+    <section id="why-chaosdex" className="container-section bg-charcoal">
       <SectionHeader
         title="Why CHAOSDEX"
         description="A different way to look at crypto — focused on head-to-head token comparison and relative performance."
@@ -48,13 +48,13 @@ export function WhyChaosDex() {
               whileHover={{ y: -4 }}
               className="card"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/5 bg-white/5 mb-6 text-silver-400">
-                <Icon className="w-6 h-6" />
+              <div className="flex h-10 w-10 items-center justify-center rounded-sm border border-white/10 bg-white/5 mb-8 text-sage">
+                <Icon className="w-5 h-5" />
               </div>
-              <h3 className="text-xl font-light text-white mb-3">
+              <h3 className="text-xl font-medium text-ivory mb-4">
                 {feature.title}
               </h3>
-              <p className="text-silver-400 text-sm leading-relaxed">
+              <p className="text-sage text-sm leading-relaxed">
                 {feature.description}
               </p>
             </motion.div>
@@ -62,18 +62,19 @@ export function WhyChaosDex() {
         })}
       </div>
 
-      <div className="mt-16 card">
-        <div className="p-8 lg:p-12">
-          <h3 className="text-2xl sm:text-3xl font-light text-white mb-6">
+      <div className="mt-20 card relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(199,205,216,0.03)_0%,_transparent_50%)] pointer-events-none" />
+        <div className="relative z-10 p-10 lg:p-16">
+          <h3 className="text-2xl sm:text-3xl font-bold text-ivory mb-6">
             Built for token matchups
           </h3>
-          <p className="text-silver-400 text-sm leading-relaxed max-w-lg mb-8">
+          <p className="text-lg text-sage leading-relaxed max-w-lg mb-8">
             Most crypto tools show you price charts. CHAOSDEX shows you a
             matchup. Two tokens enter the arena, and over a defined period, one
             outperforms the other. It's about relative performance — who wins,
             not how high the price goes.
           </p>
-          <p className="text-xs text-silver-500 font-mono uppercase tracking-widest">
+          <p className="text-xs text-sage/50 font-mono uppercase tracking-widest">
             No financial advice. No trading engine. Illustration only.
           </p>
         </div>

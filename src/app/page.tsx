@@ -10,7 +10,7 @@ import { Community } from '@/components/Community'
 
 export default function Page() {
   return (
-    <div className="relative min-h-screen flex flex-col select-none">
+    <div className="relative min-h-screen flex flex-col select-none bg-forest-900">
       <Navbar />
       <main className="flex-grow">
         <Hero />

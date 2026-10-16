@@ -5,62 +5,156 @@
 @layer base {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-rgb: 5, 5, 7;
+    --background-rgb: 12, 13, 16;
   }
 
   body {
     color: rgb(var(--foreground-rgb));
-    background: rgb(var(--background-rgb));
+    background: #0C0D10;
     font-family: var(--font-inter), system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
 
   html {
     scroll-behavior: smooth;
   }
+
+  * {
+    box-sizing: border-box;
+  }
 }
 
 @layer components {
   .container-section {
-    @apply px-4 sm:px-6 lg:px-8 py-22 sm:py-28 lg:py-36;
+    @apply px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40;
   }
 
   .section-header {
-    @apply mb-16 text-center;
+    @apply mb-12 text-center;
   }
 
   .section-header h2 {
-    @apply text-4xl sm:text-5xl font-light tracking-tight text-white mb-4;
+    @apply text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-ivory mb-4 leading-[1.05];
   }
 
   .section-header p {
-    @apply text-lg sm:text-xl text-silver-400 max-w-2xl mx-auto;
+    @apply text-lg text-sage max-w-2xl mx-auto leading-relaxed;
   }
 
-  .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-white text-black font-medium rounded-full transition-all duration-300 hover:bg-silver-300 hover:text-black hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black disabled:opacity-50 disabled:cursor-not-allowed;
+  .section-kicker {
+    @apply text-xs font-bold uppercase tracking-[0.25em] text-gold mb-4;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-gold text-forest-900 font-medium transition-colors hover:bg-gold/90 focus:outline-none;
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center px-6 py-3 border border-silver-400 text-white font-medium rounded-full transition-all duration-300 hover:bg-white hover:text-black hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-white disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg border border-forest-700 text-sage font-medium transition-colors hover:border-gold hover:text-gold focus:outline-none;
   }
 
   .card {
-    @apply bg-black-card rounded-3xl border border-white/5 p-8 transition-all duration-300 hover:border-silver-500/50;
+    @apply bg-charcoal rounded-none border border-forest-700 p-8 sm:p-12 transition-colors hover:border-forest-700/50;
+  }
+
+  .card-interactive {
+    @apply card hover:border-gold/30;
   }
 
   .text-balance {
     text-wrap: balance;
   }
+
+  .mono {
+    font-family: var(--font-mono), ui-monospace, monospace;
+  }
+
+  .font-bold {
+    font-weight: 700;
+  }
+
+  .font-medium {
+    font-weight: 500;
+  }
+
+  .font-light {
+    font-weight: 300;
+  }
 }
 
 @layer utilities {
-  .text-shadow {
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  .text-gold {
+    color: #C7CDD8;
   }
 
-  .bg-gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-silver-300 to-white;
+  .text-tradegreen {
+    color: #30E000;
+  }
+
+  .text-ivory {
+    color: #FFFFFF;
+  }
+
+  .text-sage {
+    color: #9AA3AB;
+  }
+
+  .text-forest-900 {
+    color: #0C0D10;
+  }
+
+  .bg-charcoal {
+    background-color: #1A1B1F;
+  }
+
+  .bg-forest-900 {
+    background-color: #0C0D10;
+  }
+
+  .border-forest-700 {
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .border-gold {
+    border-color: #C7CDD8;
+  }
+
+  .border-gold\/30 {
+    border-color: rgba(199, 205, 216, 0.3);
+  }
+
+  .blur-3xl {
+    filter: blur(64px);
+  }
+
+  .bg-grid {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(199, 205, 216, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(199, 205, 216, 0.03) 1px, transparent 1px);
+  }
+
+  .tracking-tight {
+    letter-spacing: -0.025em;
+  }
+
+  .tracking-\[0\.25em\] {
+    letter-spacing: 0.25em;
+  }
+
+  .leading-\[1\.05\] {
+    line-height: 1.05;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

@@ -14,4 +14,4 @@ export const NAV_LINKS = [
   { name: 'Community', href: '#community' },
 ] as const
 
-export const X_PLACEHOLDER_URL = '#'
+export const X_PLACEHOLDER_URL = 'https://x.com/ChaosDex_6'

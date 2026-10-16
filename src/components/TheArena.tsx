@@ -24,32 +24,32 @@ const TIME_PERIODS = ['24H', '7D', '30D', '90D']
 
 export function TheArena() {
   return (
-    <section id="the-arena" className="container-section">
-      <div className="max-w-90 mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-          <div>
-            <h2 className="text-4xl sm:text-5xl font-light tracking-tight text-white mb-3">
-              The Arena
+    <section id="the-arena" className="container-section bg-forest-900">
+      <div className="mx-auto max-w-[1600px]">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
+          <div className="section-header text-left mb-0">
+            <span className="section-kicker">The arena</span>
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-ivory mb-6 leading-[1.05]">
+              Token versus token comparison
             </h2>
-            <p className="text-lg text-silver-400 max-w-md">
-              A premium preview of the token comparison interface. Select a pair
-              and a time period to see relative performance.
+            <p className="text-lg text-sage max-w-xl leading-relaxed">
+              A preview of the comparison interface. Two tokens enter — one
+              outperforms the other over your chosen period.
             </p>
           </div>
-          <div className="flex items-center gap-3 px-4 py-2 rounded-full border border-silver-500/30 bg-white/5">
-            <RefreshCw className="w-4 h-4 text-silver-400 animate-pulse-slow" />
-            <span className="text-xs font-mono text-silver-400 uppercase tracking-wider">
+          <div className="flex items-center gap-3 px-3 py-1 rounded-full border border-forest-700 bg-white/5">
+            <RefreshCw className="w-4 h-4 text-sage animate-pulse-slow" />
+            <span className="text-[10px] font-bold text-sage uppercase tracking-widest">
               Coming soon
             </span>
           </div>
         </div>
 
-        {/* Controls */}
-        <div className="grid lg:grid-cols-12 gap-8 mb-16">
-          <div className="lg:col-span-4 space-y-4">
-            <div className="flex items-center gap-3 mb-2">
-              <BarChart2 className="w-5 h-5 text-silver-400" />
-              <span className="text-sm font-medium text-silver-300 uppercase tracking-wider">
+        <div className="grid lg:grid-cols-12 gap-8">
+          <div className="lg:col-span-4 space-y-6">
+            <div className="flex items-center gap-2 mb-6">
+              <BarChart2 className="w-5 h-5 text-sage" />
+              <span className="text-sm font-medium text-sage/70 uppercase tracking-wider">
                 Select token pair
               </span>
             </div>
@@ -57,25 +57,25 @@ export function TheArena() {
               {PAIRS.slice(0, 3).map((pair) => (
                 <button
                   key={pair.id}
-                  className="flex items-center justify-between w-full px-4 py-3 rounded-xl border border-white/5 bg-black-card/50 text-left hover:border-silver-500/50 transition-colors group"
+                  className="flex items-center justify-between w-full px-5 py-4 rounded-sm border border-white/5 bg-charcoal text-left hover:border-gold/30 hover:bg-charcoal/50 transition-colors group"
                 >
                   <div className="flex items-center gap-3">
                     <span
-                      className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/5 text-white text-xs font-bold"
+                      className="flex h-8 w-8 items-center justify-center rounded-sm bg-white/5 text-ivory text-xs font-bold border border-white/10"
                       style={{ color: pair.color }}
                     >
                       {pair.symbol.slice(0, 1)}
                     </span>
                     <div>
-                      <span className="text-sm font-medium text-white">
+                      <span className="text-sm font-light text-ivory">
                         {pair.name}
                       </span>
-                      <span className="text-xs text-silver-500 font-mono">
+                      <span className="text-[10px] font-mono text-sage/50 uppercase">
                         {pair.symbol}
                       </span>
                     </div>
                   </div>
-                  <span className="text-xs font-mono text-silver-400 group-hover:text-white transition-colors">
+                  <span className="text-[10px] font-mono text-sage group-hover:text-ivory transition-colors mono">
                     {pair.change}
                   </span>
                 </button>
@@ -84,101 +84,131 @@ export function TheArena() {
           </div>
 
           <div className="lg:col-span-8">
-            <div className="card">
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-2">
-                  <Clock className="w-5 h-5 text-silver-400" />
-                  <span className="text-sm font-medium text-silver-300 uppercase tracking-wider">
-                    Time period
-                  </span>
-                </div>
-                <div className="flex gap-1">
-                  {TIME_PERIODS.map((period) => (
-                    <button
-                      key={period}
-                      className="w-10 h-10 rounded-full border border-silver-500/30 text-xs font-mono text-silver-400 hover:border-silver-500/50 hover:text-white transition-colors"
-                    >
-                      {period}
-                    </button>
-                  ))}
-                </div>
-              </div>
+            <div className="card relative overflow-hidden">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(199,205,216,0.03)_0%,_transparent_40%)] pointer-events-none" />
 
-              {/* Chart preview area */}
-              <div className="aspect-video rounded-3xl border border-white/5 bg-black-deep p-1 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(192,192,192,0.03)_0%,_transparent_40%)] pointer-events-none" />
-                <div className="absolute top-6 left-6 right-6 flex justify-between items-start">
-                  <div className="flex flex-col gap-1">
-                    <span className="text-[10px] font-mono text-silver-500">Max</span>
-                    <span className="text-[10px] font-mono text-silver-500">+12%</span>
-                    <span className="text-[10px] font-mono text-silver-500">0%</span>
-                    <span className="text-[10px] font-mono text-silver-500">-12%</span>
-                    <span className="text-[10px] font-mono text-silver-500">Min</span>
+              <div className="relative z-10 p-8 lg:p-12">
+                <div className="flex items-center justify-between mb-8">
+                  <div className="flex items-center gap-2">
+                    <Clock className="w-5 h-5 text-sage" />
+                    <span className="text-sm font-light text-sage/70 uppercase tracking-wider">
+                      Time period
+                    </span>
+                  </div>
+                  <div className="flex gap-1">
+                    {TIME_PERIODS.map((period) => (
+                      <button
+                        key={period}
+                        className="w-10 h-10 rounded-sm border border-white/5 text-[10px] font-mono text-sage hover:border-gold/30 hover:text-ivory transition-colors"
+                      >
+                        {period}
+                      </button>
+                    ))}
                   </div>
                 </div>
-                <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end">
-                  {['Day 1', 'Day 8', 'Day 15', 'Day 22', 'Day 30'].map((label, i) => (
-                    <span key={label} className="text-[10px] font-mono text-silver-500">
-                      {label}
-                    </span>
-                  ))}
-                </div>
-                <div className="absolute inset-0 flex items-end justify-between gap-1 px-6 pb-12">
-                  {[15, 40, 25, 70, 50, 90, 60, 85, 45, 95, 55, 100].map(
-                    (height, i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ height: 0 }}
-                        animate={{ height: `${height}%` }}
-                        transition={{ delay: i * 0.05, duration: 0.6 }}
-                        className="w-full bg-white/10 rounded-t-sm hover:bg-white/30 transition-colors group"
-                      />
-                    )
-                  )}
-                </div>
-                <div className="absolute bottom-4 left-4 flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full" style={{ backgroundColor: '#4ecdc4' }} />
-                  <span className="text-[10px] font-mono text-silver-400">PEPE</span>
-                  <span className="w-2 h-2 rounded-full" style={{ backgroundColor: '#c2a633' }} />
-                  <span className="text-[10px] font-mono text-silver-400">DOGE</span>
-                </div>
-              </div>
 
-              <div className="mt-6 grid grid-cols-2 gap-4">
-                {[PAIRS[0], PAIRS[1]].map((pair) => (
-                  <div
-                    key={pair.id}
-                    className="flex items-center gap-3 px-3 py-2 rounded-xl border border-white/5 bg-black-card/50"
-                  >
-                    <span
-                      className="flex h-6 w-6 items-center justify-center rounded bg-white/5 text-[10px] font-bold"
-                      style={{ color: pair.color }}
-                    >
-                      {pair.symbol.slice(0, 1)}
-                    </span>
-                    <div className="flex flex-col">
-                      <span className="text-xs font-medium text-white">
-                        {pair.symbol}
+                <div className="grid grid-cols-2 gap-8 items-stretch mb-8">
+                  <div className="flex flex-col items-end gap-2 border-r border-forest-700 pr-6">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="flex h-6 w-6 items-center justify-center rounded-sm bg-white/5 text-tradegreen text-xs font-bold border border-tradegreen/30">
+                        P
                       </span>
-                      <span className="text-[10px] text-silver-500 font-mono">
-                        {pair.change}
+                      <div className="text-right">
+                        <span className="text-sm font-light text-ivory">PEPE</span>
+                        <span className="text-[10px] font-mono text-sage/50 uppercase">Token A</span>
+                      </div>
+                    </div>
+                    <span className="text-3xl font-light text-ivory mono">+8.0%</span>
+                  </div>
+                  <div className="flex flex-col items-start gap-2 pl-6">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="flex h-6 w-6 items-center justify-center rounded-sm bg-white/5 text-sage text-xs font-bold border border-white/10">
+                        D
                       </span>
+                      <div className="text-left">
+                        <span className="text-sm font-light text-ivory">DOGE</span>
+                        <span className="text-[10px] font-mono text-sage/50 uppercase">Token B</span>
+                      </div>
+                    </div>
+                    <span className="text-3xl font-light text-ivory mono">+3.0%</span>
+                  </div>
+                </div>
+
+                <div className="aspect-[16/9] rounded-sm border border-forest-700 bg-forest-900 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(0,0,0,0.4)_100%)] pointer-events-none" />
+                  <div className="absolute top-6 left-6 right-6 flex justify-between items-start">
+                    <div className="flex flex-col gap-1">
+                      <span className="text-[10px] font-mono text-sage/50">Max</span>
+                      <span className="text-[10px] font-mono text-sage/50">+12%</span>
+                      <span className="text-[10px] font-mono text-sage/50">0%</span>
+                      <span className="text-[10px] font-mono text-sage/50">-12%</span>
+                      <span className="text-[10px] font-mono text-sage/50">Min</span>
                     </div>
                   </div>
-                ))}
+                  <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end">
+                    {['Day 1', 'Day 8', 'Day 15', 'Day 22', 'Day 30'].map((label, i) => (
+                      <span key={label} className="text-[10px] font-mono text-sage/50">
+                        {label}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="absolute inset-0 flex items-end justify-between gap-1 px-6 pb-14">
+                    {[15, 40, 25, 70, 50, 90, 60, 85, 45, 95, 55, 100].map(
+                      (height, i) => (
+                        <motion.div
+                          key={i}
+                          initial={{ height: 0 }}
+                          animate={{ height: `${height}%` }}
+                          transition={{ delay: i * 0.05, duration: 0.6 }}
+                          className="w-full bg-white/10 rounded-t-sm group-hover:bg-tradegreen/20 transition-colors"
+                        />
+                      )
+                    )}
+                  </div>
+                  <div className="absolute bottom-4 left-4 flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-tradegreen" />
+                    <span className="text-[10px] font-mono text-sage">PEPE</span>
+                    <span className="w-2 h-2 rounded-full bg-white/20" />
+                    <span className="text-[10px] font-mono text-sage">DOGE</span>
+                  </div>
+                </div>
+
+                <div className="mt-8 grid grid-cols-2 gap-4">
+                  {[PAIRS[0], PAIRS[1]].map((pair) => (
+                    <div
+                      key={pair.id}
+                      className="flex items-center gap-3 px-4 py-3 rounded-sm border border-white/5 bg-charcoal/50"
+                    >
+                      <span
+                        className="flex h-5 w-5 items-center justify-center rounded-sm bg-white/5 text-[10px] font-bold"
+                        style={{ color: pair.color }}
+                      >
+                        {pair.symbol.slice(0, 1)}
+                      </span>
+                      <div className="flex flex-col">
+                        <span className="text-xs font-light text-ivory mono">
+                          {pair.symbol}
+                        </span>
+                        <span className="text-[10px] text-sage font-mono uppercase">
+                          {pair.change}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div className="mt-12 flex items-center justify-center gap-3 text-xs text-silver-500 font-mono">
-          <span className="flex h-6 w-6 items-center justify-center rounded-full border border-silver-500/30 text-silver-400">
-            !
-          </span>
-          <span>
-            This is a UI preview only. No real trading, wallet connection, or
-            live market data is implemented.
-          </span>
+            <div className="mt-8 flex items-center justify-center gap-2 text-[10px] font-mono text-sage uppercase tracking-widest">
+              <span className="flex h-5 w-5 items-center justify-center rounded-full border border-white/10 text-sage">
+                !
+              </span>
+              <span>
+                UI preview only. No real trading, wallet connection, or live
+                market data is implemented.
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </section>

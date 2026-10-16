@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
-import { Menu, X, ArrowRight } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { NAV_LINKS, X_PLACEHOLDER_URL } from './utils'
 import { cn } from './utils'
 
@@ -19,64 +19,91 @@ export function Navbar() {
   return (
     <nav
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        scrolled
-          ? 'bg-black-deep/90 backdrop-blur-md border-b border-white/5'
-          : 'bg-transparent'
+        'sticky top-0 z-40 border-b border-forest-700 bg-forest-900/90 backdrop-blur',
+        scrolled ? '' : ''
       )}
     >
-      <div className="max-w-90 mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center gap-2">
-            <span className="text-xl font-mono font-light tracking-tight text-white">
-              CHAOSDEX
-            </span>
-            <span className="text-xs font-mono font-light text-silver-500 tracking-widest uppercase">
-              $CHAOS
-            </span>
-          </Link>
+      <div className="mx-auto flex h-16 w-full max-w-[1600px] items-center gap-2 px-3 sm:gap-4 sm:px-6">
+        <button
+          onClick={() => setIsOpen((prev) => !prev)}
+          aria-label="Open navigation menu"
+          aria-expanded={isOpen}
+          aria-controls="chaosdex-nav-drawer"
+          className="rounded-lg border border-forest-700 p-2 text-sage transition hover:border-gold hover:text-gold"
+        >
+          {isOpen ? (
+            <X className="w-5 h-5" />
+          ) : (
+            <Menu className="w-5 h-5" />
+          )}
+        </button>
 
-          <div className="hidden md:flex items-center gap-8">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-sm font-medium text-silver-400 transition-colors hover:text-white"
-              >
-                {link.name}
-              </Link>
-            ))}
-            <a
-              href={X_PLACEHOLDER_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-medium text-silver-400 transition-colors hover:text-white flex items-center gap-1.5"
-            >
-              X <ArrowRight className="w-3 h-3" />
-            </a>
-          </div>
+        <Link
+          href="/"
+          className="flex min-w-0 shrink-0 items-center gap-2.5"
+        >
+          <span className="text-lg font-bold tracking-wide text-ivory">
+            CHAOSDEX
+          </span>
+          <span className="hidden min-[400px]:inline text-xs font-medium text-gold">
+            $CHAOS
+          </span>
+        </Link>
 
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen((prev) => !prev)}
-              className="text-silver-400 hover:text-white focus:outline-none"
-              aria-label="Open menu"
+        <nav className="ml-4 hidden items-center gap-1 lg:flex">
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className="rounded-lg px-3 py-2 text-sm font-medium text-sage transition hover:text-ivory"
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
+              {link.name}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="ml-auto flex min-w-0 items-center gap-2 sm:gap-3">
+          <a
+            href={X_PLACEHOLDER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden shrink-0 items-center gap-1.5 rounded-full border border-forest-700 px-3 py-1 text-xs text-sage sm:flex"
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-tradegreen"></span>
+            X
+          </a>
         </div>
       </div>
 
+      <nav className="flex gap-1 overflow-x-auto border-t border-forest-700/60 px-4 py-2 lg:hidden">
+        {NAV_LINKS.map((link) => (
+          <Link
+            key={link.name}
+            href={link.href}
+            className="rounded-lg px-3 py-1.5 text-sm text-sage"
+          >
+            {link.name}
+          </Link>
+        ))}
+        <a
+          href={X_PLACEHOLDER_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rounded-lg px-3 py-1.5 text-sm text-sage"
+        >
+          X
+        </a>
+      </nav>
+
       {isOpen && (
-        <div className="md:hidden bg-black-deep border-t border-white/5">
-          <div className="max-w-90 mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-4">
+        <div className="lg:hidden bg-forest-900 border-t border-forest-700">
+          <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-2 px-4 sm:px-6 lg:px-8 py-6">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="block text-base font-medium text-white py-3 transition-colors hover:text-silver-300"
+                className="rounded-lg px-3 py-2 text-sm font-medium text-sage transition hover:text-ivory"
               >
                 {link.name}
               </Link>
@@ -86,9 +113,9 @@ export function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
-              className="block text-base font-medium text-white py-3 transition-colors hover:text-silver-300 flex items-center gap-1.5"
+              className="rounded-lg px-3 py-2 text-sm font-medium text-sage transition hover:text-ivory"
             >
-              X <ArrowRight className="w-4 h-4" />
+              X
             </a>
           </div>
         </div>
