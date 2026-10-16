@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Coin, ShieldAlert } from 'lucide-react'
+import { DollarSign, ShieldAlert } from 'lucide-react'
 
 export function TheChaosToken() {
   return (
@@ -67,7 +67,7 @@ export function TheChaosToken() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(192,192,192,0.03)_0%,_transparent_50%)] pointer-events-none" />
           <div className="relative z-10 p-8 lg:p-12">
             <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/5 bg-white/5 mb-6 text-silver-400 group-hover:border-silver-500/50 transition-colors">
-              <Coin className="w-8 h-8" />
+              <DollarSign className="w-8 h-8" />
             </div>
             <h3 className="text-2xl font-light text-white mb-4">$CHAOS</h3>
             <p className="text-silver-400 text-sm leading-relaxed mb-8">
