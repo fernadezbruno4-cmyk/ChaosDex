@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowRight, GitHub } from 'lucide-react'
+import { ArrowRight, Github } from 'lucide-react'
 import { NAV_LINKS, X_PLACEHOLDER_URL } from './utils'
 
 export function Footer() {
@@ -67,7 +67,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm text-silver-400 transition-colors hover:text-white"
                 >
-                  <GitHub className="w-4 h-4" />
+                  <Github className="w-4 h-4" />
                   GitHub
                 </a>
               </li>
